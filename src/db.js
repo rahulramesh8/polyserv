@@ -1,4 +1,4 @@
-const { Client } = require('pg');
+import { Client } from 'pg';
 
 const initDB = async (callback = () => {}) => {
   const client = new Client();
