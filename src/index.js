@@ -1,4 +1,4 @@
-require('dotenv').config()
+import { config as envConfig } from 'dotenv';
 import 'babel-polyfill';
 import http from 'http';
 import express from 'express';
@@ -9,6 +9,8 @@ import initializeDb from './db';
 import middleware from './middleware';
 import api from './api';
 import config from './config.json';
+
+envConfig();
 
 let app = express();
 app.server = http.createServer(app);
