@@ -7,8 +7,9 @@
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
-    "prestart": "yarn run -s build",
-    "test": "eslint src"
+    "prestart": "npm run -s build",
+    "test": "eslint src",
+    "start-db": "docker run -v db-data:/var/lib/postgresql/data -p 5432:5432 --env-file postgres/.env db"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -28,11 +29,14 @@
   "author": "KCRR",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "cors": "^2.7.1",
+    "dotenv": "^6.0.0",
     "express": "^4.13.3",
     "morgan": "^1.8.0",
+    "pg": "^7.4.3",
     "resource-router-middleware": "^0.6.0"
   },
   "devDependencies": {
