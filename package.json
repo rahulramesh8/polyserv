@@ -9,7 +9,8 @@
     "start": "node dist",
     "prestart": "npm run -s build",
     "test": "eslint src",
-    "start-db": "docker run -v db-data:/var/lib/postgresql/data -p 5432:5432 --env-file postgres/.env db"
+    "build-db": "docker build -t polyserv-db ./postgres",
+    "run-db": "docker run -v db-data:/var/lib/postgresql/data -p 5432:5432 --env-file postgres/.env polyserv-db"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
