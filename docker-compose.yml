@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  db:
+    build: ./postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file: ./postgres/.env
+  api:
+    build: .
+    ports:
+      - "8080:8080" 
+    environment:
+      - PGHOST=db
+
+volumes:
+  db-data:

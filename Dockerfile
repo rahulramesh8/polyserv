@@ -1,10 +1,8 @@
-FROM alpine:3.4
+FROM alpine:3.6
 
-# File Author / Maintainer
-LABEL authors="Zouhir Chahoud <zouhir@zouhir.org>"
 
 # Update & install required packages
-RUN apk add --update nodejs bash git
+RUN apk add --update nodejs bash git yarn
 
 # Install app dependencies
 COPY package.json /www/package.json
