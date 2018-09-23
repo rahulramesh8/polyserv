@@ -1,5 +1,5 @@
 import { isInt } from './util';
-import { validPolygonTypes } from '../models/polygons';
+import { POLYGON_TYPES } from '../constants/polygons';
 
 const errors = {
   invalidPolygonType: 'Invalid Request - check your polygon type',
@@ -13,7 +13,7 @@ const boundsAreValid = ({ boundsArray }) => boundsArray.length === 4 && boundsAr
 export const getBoundsArrayFromQuery = ({ queryBounds }) => queryBounds ? queryBounds.split(',') : [];
 
 export const getLoadError = ({ boundsArray, polygonType }) => {
-  const isValidPolygonType = !validPolygonTypes.includes(polygonType);
+  const isValidPolygonType = !Object.values(POLYGON_TYPES).includes(polygonType);
   const polygonTypeError = isValidPolygonType ? errors.invalidPolygonType : null;
   const boundsExistError = !polygonTypeError && !boundsArray.length ? errors.noBounds : polygonTypeError;
   const validBoundsError = !boundsExistError && !boundsAreValid({ boundsArray }) ? errors.invalidBounds : boundsExistError;
