@@ -1,3 +1,6 @@
 //TODO: decide on a polygon modal
-const polygons = [];
-export default polygons;
+export const validPolygonTypes = ['all', 'province', 'region', 'neighbourhood'];
+
+export default ({ config, db }) => ({
+ 
+});
