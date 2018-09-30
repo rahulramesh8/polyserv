@@ -1,5 +1,3 @@
 //TODO: decide on a polygon modal
 
-export default ({ config, db }) => ({
- 
-});
+export default ({ config, db }) => ({});

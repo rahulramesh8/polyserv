@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "plugins": ["react"],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "no-console": "off",
+    "camelcase": "warn",
+    "array-callback-return":"error",
+    "prefer-template":"error",
+    "no-eval":"error",
+    "no-loop-func":"error",
+    "no-param-reassign": "error",
+    "prefer-arrow-callback": "error",
+    "arrow-spacing": "error",
+    "eqeqeq": "error",
+    "no-unneeded-ternary":"error",
+    "no-process-env": "off"
+  }
+}

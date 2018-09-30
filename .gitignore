@@ -1,7 +1,14 @@
 /dist
 /logs
-/yarn-debug.log
-/node_modules
 .DS_Store
+
+#Dependencies
+/yarn-debug.log
+/yarn-error.log
+/node_modules
+
+#DotEnv
 .env
+.env.*
+!.env.sample
 /postgres/.env
