@@ -1,3 +1,4 @@
+// TODO: update mappings when we have finalised data source
 export const POLYGON_QUERY_TYPES = {
   ALL: 'all',
   PROVINCE: 'province',
