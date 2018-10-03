@@ -1,16 +1,21 @@
 import resource from 'resource-router-middleware';
 import { getBoundsArrayFromQuery , getLoadError } from '../lib/polygons-api';
+import polygonModelGen from '../models/polygons';
 
 export default ({ config, db }) => resource({
   id: 'polygons',
 
-  load: ({ query: { bounds = '' }}, id, callback) => {
+  load: async ({ query: { bounds = '' }}, id, callback) => {
     const boundsArray = getBoundsArrayFromQuery({ queryBounds: bounds });
   
     //TODO: get polygon list for bounds
-    const polygons = [];
+    try {
+      const polygons = await polygonModelGen({ config, db }).getAllPolygons({ limit: 40 });
+      callback(getLoadError({ boundsArray, polygonType: id }), polygons);
+    } catch (error) {
+      console.error(error);
+    }
   
-    callback(getLoadError({ boundsArray, polygonType: id }), polygons);
   },
 
   read: ({ polygons }, res) => {

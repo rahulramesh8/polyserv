@@ -1,9 +1,9 @@
 import { Client } from 'pg';
 
-const initDB = async (callback = () => {}) => {
+const initDB = async () => {
   const client = new Client();
   await client.connect();
-	callback();
+	return client;
 }
 
 export default initDB;

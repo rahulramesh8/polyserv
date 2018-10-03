@@ -10,35 +10,44 @@ import middleware from './middleware';
 import api from './api';
 import config from './config.json';
 
-envConfig();
 
-let app = express();
-app.server = http.createServer(app);
 
-// logger
-app.use(morgan('dev'));
+const initApp = async () => {
+  envConfig();
 
-// 3rd party middleware
-app.use(cors({
-	exposedHeaders: config.corsHeaders
-}));
+  let app = express();
+  app.server = http.createServer(app);
 
-app.use(bodyParser.json({
-	limit : config.bodyLimit
-}));
+  // logger
+  app.use(morgan('dev'));
 
-// connect to db
-initializeDb( db => {
+  // 3rd party middleware
+  app.use(cors({
+    exposedHeaders: config.corsHeaders
+  }));
 
-	// internal middleware
-	app.use(middleware({ config, db }));
+  app.use(bodyParser.json({
+    limit : config.bodyLimit
+  }));
 
-	// api router
-	app.use('/api', api({ config, db }));
+  try {
+    const db = await initializeDb();
 
-	app.server.listen(process.env.PORT || config.port, () => {
-		console.log(`Started on port ${app.server.address().port}`);
-	});
-});
+    // internal middleware
+    app.use(middleware({ config, db }));
 
-export default app;
+    // api router
+    app.use('/api', api({ config, db }));
+
+    app.server.listen(process.env.PORT || config.port, () => {
+      console.log(`Started on port ${app.server.address().port}`);
+    });
+  } catch(error) {
+    console.error(error);
+  }
+
+  return app;
+};
+
+
+export default initApp();
