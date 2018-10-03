@@ -8,9 +8,8 @@
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "yarn run -s build",
-    "test": "eslint src",
-    "build-db": "docker build -t polyserv-db ./postgres",
-    "run-db": "docker run -v db-data:/var/lib/postgresql/data -p 5432:5432 --env-file postgres/.env polyserv-db"
+    "lint": "eslint src",
+    "gcp-proxy": "./cloud_sql_proxy -instances=polyserv-api:us-central1:og-instance=tcp:5432"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
