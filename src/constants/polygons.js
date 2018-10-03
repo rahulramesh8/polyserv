@@ -5,3 +5,4 @@ export const POLYGON_TYPES = {
   NEIGHBOURHOOD: 'neighbourhood'
 };
 
+export const polygonTableName = 'myTable';
