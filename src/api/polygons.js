@@ -10,7 +10,7 @@ export default ({ config, db }) => resource({
   
     //TODO: get polygon list for bounds
     try {
-      const polygons = polygonModelGen({ config, db }).getAllPolygons({ limit: 20 });
+      const polygons = await polygonModelGen({ config, db }).getAllPolygons({ limit: 40 });
       callback(getLoadError({ boundsArray, polygonType: id }), polygons);
     } catch (error) {
       console.error(error);
