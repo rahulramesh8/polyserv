@@ -10,8 +10,6 @@ import middleware from './middleware';
 import api from './api';
 import config from './config.json';
 
-
-
 const initApp = async () => {
   envConfig();
 
