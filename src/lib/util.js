@@ -23,9 +23,9 @@ export const isInt = value => !isNaN(parseInt(value));
 
 export const throwError = ({ error }) => { throw new Error(error); };
 
-export const functionWithRequiredParams = ({ fn, requiredParams }) => ({ ...args }) => {
-  return requiredParams.every( paramKey => args[paramKey] !== null && args[paramKey] !== undefined)
-  ? fn({ ...args })
-  : throwError({ error: 'parameter check failed, please ensure all required parameters are supplied to function'});
-}
+export const functionWithRequiredParams = ({ fn, requiredParams }) => ({ ...args }) => 
+  requiredParams.every( paramKey => args[paramKey] !== null && args[paramKey] !== undefined)
+    ? fn({ ...args })
+    : throwError({ error: 'parameter check failed, please ensure all required parameters are supplied to function'});
+
 
