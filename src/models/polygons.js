@@ -10,11 +10,11 @@ export default ({ config, db }) => ({
     if(queryType === POLYGON_QUERY_TYPES.ALL)
       return this.getAllPolygons({ limit });
 
-    const dbTypesToQuery = POLYGON_QUERY_DB_MAP[queryType].reduce( (accumulator, typeString, index) => {
-      return index === 0 ? `'${typeString}'` :`${accumulator}, '${typeString}'`
-    }, '');
-    
-    const dbResponse = await db.query(`SELECT * FROM ${polygonTableName} WHERE ${DB_FIELDS.TYPE} IN (${dbTypesToQuery}) LIMIT ${limit}`);
+    const dbTypesToQuery = POLYGON_QUERY_DB_MAP[queryType].reduce( (accumulator, typeString, index) =>
+    index === 0 ? `'${typeString}'` :`${accumulator}, '${typeString}'`
+    , '');
+
+    const dbResponse = await db.query(`SELECT * FROM ${polygonTableName} WHERE ${DB_FIELDS.PROPERTIES_TYPE} IN (${dbTypesToQuery}) LIMIT ${limit}`);
     return dbResponse.rows.map(mapPolygonRecordToGeoJson);
   }
 });

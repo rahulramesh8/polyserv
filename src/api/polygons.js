@@ -1,6 +1,6 @@
 import resource from 'resource-router-middleware';
 import { getBoundsArrayFromQuery , getLoadError } from '../lib/polygons-api';
-import polygonModelGen from '../models/polygons';
+import polygonModel from '../models/polygons';
 
 export default ({ config, db }) => resource({
   id: 'polygons',
@@ -10,7 +10,7 @@ export default ({ config, db }) => resource({
     const queryError = getLoadError({ boundsArray, polygonType: polygonQueryType });
     //TODO: get polygon list for bounds
     try {
-      const polygons = !queryError ? await polygonModelGen({ config, db }).getPolygonByQueryType({ queryType: polygonQueryType }) : []
+      const polygons = !queryError ? await polygonModel({ config, db }).getPolygonByQueryType({ queryType: polygonQueryType }) : [];
       callback(queryError, polygons);
     } catch (error) {
       console.error(error);
@@ -18,6 +18,6 @@ export default ({ config, db }) => resource({
   },
 
   read: ({ polygons }, res) => {
-    res.json({ polygons })
+    res.json(polygons)
   }
 });
