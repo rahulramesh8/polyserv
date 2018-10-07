@@ -38,5 +38,9 @@ export const POLYGON_QUERY_DB_MAP = {
 export const polygonTableName = 'myTable';
 
 export const DB_FIELDS = {
-  TYPE: 'propertiestype'
+  TYPE: 'type',
+  PROPERTIES_TYPE: 'propertiestype',
+  GEOMETRY_COORDINATES: 'geometrycoordinates',
+  PROPERTIES_NAME: 'propertiesname',
+  GEOMETRY_TYPE: 'geometrytype'
 };
