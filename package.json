@@ -4,6 +4,7 @@
   "description": "Map bounds to Polygons",
   "main": "dist",
   "scripts": {
+    "calculate-polygon-center": "babel-node src/lib/calculate-polygon-center --presets es2015,stage-0",
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
