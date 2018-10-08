@@ -9,7 +9,6 @@ import initializeDb from "./db";
 import middleware from "./middleware";
 import api from "./api";
 import config from "./config.json";
-import oauthserver from "oauth2-server";
 
 const initApp = async () => {
   envConfig();
@@ -18,16 +17,20 @@ const initApp = async () => {
   app.server = http.createServer(app);
 
   // logger
-  app.use(morgan('dev'));
+  app.use(morgan("dev"));
 
   // 3rd party middleware
-  app.use(cors({
-    exposedHeaders: config.corsHeaders
-  }));
+  app.use(
+    cors({
+      exposedHeaders: config.corsHeaders
+    })
+  );
 
-  app.use(bodyParser.json({
-    limit : config.bodyLimit
-  }));
+  app.use(
+    bodyParser.json({
+      limit: config.bodyLimit
+    })
+  );
 
   try {
     const db = await initializeDb();
@@ -36,17 +39,16 @@ const initApp = async () => {
     app.use(middleware({ config, db }));
 
     // api router
-    app.use('/api', api({ config, db }));
+    app.use("/api", api({ config, db }));
 
     app.server.listen(process.env.PORT || config.port, () => {
       console.log(`Started on port ${app.server.address().port}`);
     });
-  } catch(error) {
+  } catch (error) {
     console.error(error);
   }
 
   return app;
 };
-
 
 export default initApp();
