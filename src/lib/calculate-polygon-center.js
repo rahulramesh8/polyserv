@@ -2,24 +2,24 @@ import { Client } from "pg";
 const client = new Client();
 client.connect();
 
-client.query(`CREATE TABLE Polygons (
-	type Text,
-	properties_name Text,
-	properties_type Text,
-	properties_pop2001 Numeric,
-	properties_dwell2001 Numeric,
-	properties_areaSqkm Numeric,
-	properties_popSqkm Numeric,
-	properties_province Text,
-	properties_centerLat Numeric,
-	properties_centerLng Numeric,
-	properties_lowLat Numeric,
-	properties_lowLng Numeric,
-	properties_highLat Numeric,
-	properties_highLng Numeric,
-	properties_radius Numeric,
-	geometry JSON
-);`);
+// client.query(`CREATE TABLE Polygons (
+// 	type Text,
+// 	properties_name Text,
+// 	properties_type Text,
+// 	properties_pop2001 Numeric,
+// 	properties_dwell2001 Numeric,
+// 	properties_areaSqkm Numeric,
+// 	properties_popSqkm Numeric,
+// 	properties_province Text,
+// 	properties_centerLat Numeric,
+// 	properties_centerLng Numeric,
+// 	properties_lowLat Numeric,
+// 	properties_lowLng Numeric,
+// 	properties_highLat Numeric,
+// 	properties_highLng Numeric,
+// 	properties_radius Numeric,
+// 	geometry JSON
+// );`);
 
 client.query("SELECT * FROM myTable", (err, res) => {
   const formattedPolygons = res.rows.map(row => {
