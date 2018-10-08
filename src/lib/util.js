@@ -19,3 +19,12 @@ export function toRes(res, status = 200) {
 }
 
 export const isInt = value => !isNaN(parseInt(value));
+
+export const throwError = ({ error }) => { throw new Error(error); };
+
+export const functionWithRequiredParams = ({ fn, requiredParams }) => ({ ...args }) => 
+  requiredParams.every( paramKey => args[paramKey] !== null && args[paramKey] !== undefined)
+    ? fn({ ...args })
+    : throwError({ error: 'parameter check failed, please ensure all required parameters are supplied to function'});
+
+

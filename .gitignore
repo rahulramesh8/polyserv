@@ -12,3 +12,4 @@
 .env.*
 !.env.sample
 /postgres/.env
+cloud_sql_proxy
