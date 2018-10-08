@@ -2,15 +2,16 @@ import { isInt } from './util';
 import { POLYGON_QUERY_TYPES } from '../constants/polygons';
 
 const errors = {
-  invalidPolygonType: 'Invalid Request - check your polygon type',
-  noBounds: 'Invalid Request - please supply bounds',
-  invalidBounds: 'Invalid Request - bounds supplied are invalid'
+  invalidPolygonType: "Invalid Request - check your polygon type",
+  noBounds: "Invalid Request - please supply bounds",
+  invalidBounds: "Invalid Request - bounds supplied are invalid"
 };
 
-const boundsAreValid = ({ boundsArray }) => boundsArray.length === 4 && boundsArray.every(isInt);
+const boundsAreValid = ({ boundsArray }) =>
+  boundsArray.length === 4 && boundsArray.every(isInt);
 
-
-export const getBoundsArrayFromQuery = ({ queryBounds }) => queryBounds ? queryBounds.split(',') : [];
+export const getBoundsArrayFromQuery = ({ queryBounds }) =>
+  queryBounds ? queryBounds.split(",") : [];
 
 export const getLoadError = ({ boundsArray, polygonType }) => {
   const isValidPolygonType = !Object.values(POLYGON_QUERY_TYPES).includes(polygonType);

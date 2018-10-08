@@ -1,0 +1,9 @@
+{
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "prettier.printWidth": 200,
+  "prettier.tabWidth": 2,
+  "todohighlight.keywords": ["TO-DO, TODO, TO DO"],
+  "todohighlight.toggleURI": true,
+  "editor.tabSize": 2
+}

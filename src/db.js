@@ -1,4 +1,4 @@
-import { Client } from 'pg';
+import { Client } from "pg";
 
 const initDB = async () => {
   const client = new Client();
