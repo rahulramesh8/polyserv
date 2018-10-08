@@ -1,5 +1,5 @@
 import { isInt } from './util';
-import { POLYGON_QUERY_TYPES } from '../constants/polygons';
+import { POLYGON_QUERY_TYPES, POLYGON_QUERY_DB_MAP } from '../constants/polygons';
 
 const errors = {
   invalidPolygonType: "Invalid Request - check your polygon type",
@@ -20,3 +20,8 @@ export const getLoadError = ({ boundsArray, polygonType }) => {
   const validBoundsError = !boundsExistError && !boundsAreValid({ boundsArray }) ? errors.invalidBounds : boundsExistError;
   return validBoundsError;
 };
+
+export const getSqlListOfPolygonTypes = ({ queryType }) => POLYGON_QUERY_DB_MAP[queryType].reduce(
+  (accumulator, typeString, index) =>
+  index === 0 ? `'${typeString}'` :`${accumulator}, '${typeString}'`
+  , '');
