@@ -35,12 +35,17 @@ export const POLYGON_QUERY_DB_MAP = {
   [POLYGON_QUERY_TYPES.NEIGHBOURHOOD]: ['N/A'],
 };
 
-export const polygonTableName = 'myTable';
+export const polygonTableName = 'polygons';
 
 export const DB_FIELDS = {
   TYPE: 'type',
-  PROPERTIES_TYPE: 'propertiestype',
-  GEOMETRY_COORDINATES: 'geometrycoordinates',
-  PROPERTIES_NAME: 'propertiesname',
-  GEOMETRY_TYPE: 'geometrytype'
+  PROPERTIES_TYPE: 'properties_type',
+  GEOMETRY: 'geometry',
+  PROPERTIES_NAME: 'properties_name',
+  PROPERTIES_CENTER_LAT: 'properties_centerlat',
+  PROPERTIES_CENTER_LNG: 'properties_centerlng',
+  PROPERTIES_LOW_LAT: 'properties_lowlat',
+  PROPERTIES_LOW_LNG: 'properties_lowlng',
+  PROPERTIES_HIGH_LAT: 'properties_highlat',
+  PROPERTIES_HIGH_LNG: 'properties_highlng',
 };
