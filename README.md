@@ -1,57 +1,19 @@
-Express & ES6 REST API Boilerplate
-==================================
+# #Polyserv
 
-This is a straightforward boilerplate for building REST APIs with ES6 and Express.
+###Prerequisites:
 
-- ES6 support via [babel](https://babeljs.io)
-- REST resources as middleware via [resource-router-middleware](https://github.com/developit/resource-router-middleware)
-- CORS support via [cors](https://github.com/troygoode/node-cors)
-- Body Parsing via [body-parser](https://github.com/expressjs/body-parser)
+1.  Latest .env file supplied by one of the contributors
+2.  No postgress instance running on your machine
+3.  Google Cloud SDK: https://cloud.google.com/sdk/
+4.  Google Cloud Proxy: https://cloud.google.com/sql/docs/mysql/sql-proxy
 
-> Tip: If you are using [Mongoose](https://github.com/Automattic/mongoose), you can automatically expose your Models as REST resources using [restful-mongoose](https://git.io/restful-mongoose).
+    * Once installed on your machine copy the proxy file into the project folder.
+    * See the package.json command for what the file name should be as it is gitignored. However it is currently set to the default name.
 
+###To run:
 
+1.  Run a Yarn or npm install
+2.  Run command `yarn dev` or `npm run dev`
 
-Getting Started
----------------
-
-```sh
-# clone it
-git clone git@github.com:developit/express-es6-rest-api.git
-cd express-es6-rest-api
-
-# Make it your own
-rm -rf .git && git init && yarn init
-
-# Install dependencies
-yarn install
-
-# Start development live-reload server
-PORT=8080 yarn run dev
-
-# Start production server:
-PORT=8080 yarn start
-```
-Docker Support
-------
-```sh
-cd express-es6-rest-api
-
-# Build your docker
-docker build -t es6/api-service .
-#            ^      ^           ^
-#          tag  tag name      Dockerfile location
-
-# run your docker
-docker run -p 8080:8080 es6/api-service
-#                 ^            ^
-#          bind the port    container tag
-#          to your host
-#          machine port   
-
-```
-
-License
--------
-
-MIT
+###Deployment:
+No current setup
