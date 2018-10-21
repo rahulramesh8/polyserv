@@ -22,3 +22,8 @@ export const mapPolygonRecordToGeoJson = polygon =>
     name: polygon[DB_FIELDS.PROPERTIES_NAME],
     propertyType: polygon[DB_FIELDS.PROPERTIES_TYPE]
   });
+
+export const formatFeaturesToFeatureCollection = ({ features }) => ({
+  type: "FeatureCollection",
+  features
+});
