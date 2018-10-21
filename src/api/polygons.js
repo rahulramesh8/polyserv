@@ -18,18 +18,14 @@ export default ({ config, db }) =>
       });
 
       try {
-        const polygons = !queryError
+        const geojson = !queryError
           ? await polygonModel({ config, db }).getPolygonsByBounds({
               bounds: boundsArray,
               queryType: polygonQueryType,
               limit: parseInt(limit)
             })
           : [];
-        const geoJson = {
-          type: "FeatureCollection",
-          features: polygons
-        };
-        callback(queryError, geoJson);
+        callback(queryError, geojson);
       } catch (error) {
         console.error(error);
       }

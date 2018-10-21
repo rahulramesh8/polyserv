@@ -3,7 +3,10 @@ import {
   POLYGON_QUERY_TYPES,
   DB_FIELDS
 } from "../constants/polygons";
-import { mapPolygonRecordToGeoJson } from "../lib/geojson";
+import {
+  mapPolygonRecordToGeoJson,
+  formatFeaturesToFeatureCollection
+} from "../lib/geojson";
 import { getSqlListOfPolygonTypes } from "../lib/polygons-api";
 
 export default ({ config, db }) => ({
@@ -11,7 +14,9 @@ export default ({ config, db }) => ({
     const dbResponse = await db.query(
       `SELECT * FROM ${polygonTableName} LIMIT ${limit}`
     );
-    return dbResponse.rows.map(mapPolygonRecordToGeoJson);
+    return formatFeaturesToFeatureCollection({
+      features: dbResponse.rows.map(mapPolygonRecordToGeoJson)
+    });
   },
   getPolygonByQueryType: async function({ queryType, limit = 50 }) {
     if (queryType === POLYGON_QUERY_TYPES.ALL)
@@ -24,7 +29,9 @@ export default ({ config, db }) => ({
         DB_FIELDS.PROPERTIES_TYPE
       } IN (${dbTypesToQuery}) LIMIT ${limit}`
     );
-    return dbResponse.rows.map(mapPolygonRecordToGeoJson);
+    return formatFeaturesToFeatureCollection({
+      features: dbResponse.rows.map(mapPolygonRecordToGeoJson)
+    });
   },
   getPolygonsByBounds: async ({
     bounds,
@@ -60,6 +67,8 @@ export default ({ config, db }) => ({
     `;
 
     const dbResponse = await db.query(query);
-    return dbResponse.rows.map(mapPolygonRecordToGeoJson);
+    return formatFeaturesToFeatureCollection({
+      features: dbResponse.rows.map(mapPolygonRecordToGeoJson)
+    });
   }
 });
