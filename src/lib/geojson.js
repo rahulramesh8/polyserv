@@ -1,4 +1,5 @@
 import { DB_FIELDS } from "../constants/polygons";
+import { FEATURE_COLLECTION } from "../constants/open-street-maps";
 import { functionWithRequiredParams } from "./util";
 
 export const createGeoJson = ({ type, geometry, name, propertyType }) => ({
@@ -22,3 +23,8 @@ export const mapPolygonRecordToGeoJson = polygon =>
     name: polygon[DB_FIELDS.PROPERTIES_NAME],
     propertyType: polygon[DB_FIELDS.PROPERTIES_TYPE]
   });
+
+export const formatFeaturesToFeatureCollection = ({ features = [] }) => ({
+  type: FEATURE_COLLECTION,
+  features
+});

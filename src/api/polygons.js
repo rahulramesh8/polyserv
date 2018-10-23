@@ -6,7 +6,11 @@ export default ({ config, db }) =>
   resource({
     id: "polygons",
 
-    load: async ({ query: { bounds = "" } }, polygonQueryType, callback) => {
+    load: async (
+      { query: { bounds = "", limit = "50" } },
+      polygonQueryType,
+      callback
+    ) => {
       const boundsArray = getBoundsArrayFromQuery({ queryBounds: bounds });
       const queryError = getLoadError({
         boundsArray,
@@ -14,13 +18,14 @@ export default ({ config, db }) =>
       });
 
       try {
-        const polygons = !queryError
+        const geojson = !queryError
           ? await polygonModel({ config, db }).getPolygonsByBounds({
               bounds: boundsArray,
-              queryType: polygonQueryType
+              queryType: polygonQueryType,
+              limit: parseInt(limit)
             })
           : [];
-        callback(queryError, polygons);
+        callback(queryError, geojson);
       } catch (error) {
         console.error(error);
       }
