@@ -20,5 +20,4 @@ node_modules/
 src/
 .env
 .vscode/
-.gitignore
 cloud_sql_proxy
