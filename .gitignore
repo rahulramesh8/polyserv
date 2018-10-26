@@ -12,4 +12,9 @@
 .env.*
 !.env.sample
 /postgres/.env
+
+#Proxy
 cloud_sql_proxy
+
+#Production config
+app.yaml
