@@ -9,7 +9,9 @@
     "start": "node dist",
     "prestart": "yarn run -s build",
     "lint": "eslint src",
-    "gcp-proxy": "./cloud_sql_proxy -instances=polyserv-api:us-central1:og-instance=tcp:5432"
+    "gcp-proxy": "./cloud_sql_proxy -instances=polyserv-api:us-central1:og-instance=tcp:5432",
+    "deploy": "gcloud app deploy",
+    "browse": "gcloud app browse"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
