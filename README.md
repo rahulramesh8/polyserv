@@ -21,4 +21,8 @@
 2.  Run command `yarn dev` or `npm run dev`
 
 ###Deployment:
-No current setup
+App deployment is done through the glcoud sdk.
+Once signed in to the gcp account you can run the following commands:
+
+1.  `yarn deploy` - Deploys new version of app to gcp app engine
+2.  `yarn browse` - Will open app in browser
